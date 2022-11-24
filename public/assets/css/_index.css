@@ -1,3 +1,6 @@
+#oSaisie {
+    background-color: var(--background-color-lightyellow);
+}
 .homepage .container-fluid {
     display: inline-flex;
     text-align: center;
@@ -29,7 +32,7 @@
 .card {
     margin: auto auto;
     width: 90%;
-    border: 1px solid var(--background-color-linen);
+    border: 1px solid var(--background-color-khaki);
 }
 
 .card .unicorn {
@@ -44,7 +47,13 @@
 
 .card .count {
     display: inline-flex;
-    border: 1px solid var(--background-color-linen);
+    border: 1px solid var(--background-color-khaki);
     border-radius: 2px;
-    align-items: center;
 }
+
+.card-body {
+    background-color: var(--background-color-linen);
+}
+
+
+

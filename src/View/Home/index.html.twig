@@ -13,7 +13,7 @@
 					<div class="input-group">
 						<input id="oSaisie" name="oSaisie" type="text" class="form-control" aria-label="Saisie de mots clés" required="required">
 						<div class="input-group-append">
-							<button class="btn btn-primary" type="submit">Recherche</button>
+							<button class="btn" type="submit">Recherche</button>
 						</div>
 					</div>
 				</fieldset>
@@ -25,7 +25,7 @@
 
 		<div class="category">
 			{% for category in categories %}
-				<button type="button" class="btn btn-primary p-3">{{category.name}}</button>
+				<button type="button" class="btn p-3">{{category.name}}</button>
 			{% endfor %}
 		</div>
 
