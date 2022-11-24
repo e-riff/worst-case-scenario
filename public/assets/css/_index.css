@@ -1,0 +1,43 @@
+.homepage .container-fluid {
+    display: inline-flex;
+    text-align: center;
+    align-items: baseline;
+    margin: 2rem 0;
+    max-width: 100vw;
+}
+
+.category {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10rem;
+    overflow: auto;
+}
+
+.category .btn {
+
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.wrapper {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    margin: auto auto;
+    width: 90%;
+    border: 1px solid var(--background-color-linen);
+}
+
+.card .unicorn {
+    width: 2rem;
+    text-decoration: none;
+}
+
+.homepage h2 {
+    text-align: center;
+    margin: 2rem auto;
+}
