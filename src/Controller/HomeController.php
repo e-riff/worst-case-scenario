@@ -28,7 +28,15 @@ class HomeController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $item = array_map('trim', $_POST);
             $item = array_map('htmlentities', $item);
+
             $itemManager = new ItemManager();
+
+            $this->validateByField($item, 'title', 'titre', $errors);
+            $this->validateByField($item, 'region', 'region', $errors);
+            $this->validateByField($item, 'address', 'adresse', $errors);
+            $this->validateByField($item, 'postcode', 'code postal', $errors);
+            $this->validateByField($item, 'description', 'description', $errors);
+            $this->validateByField($item, 'category', 'catégorie', $errors);
 
             if (empty($errors)) {
                 $this->validateFile($errors, $item);
@@ -48,7 +56,7 @@ class HomeController extends AbstractController
 
     public function itemDetails()
     {
-        $itemManager = new ItemManager;
+        $itemManager = new ItemManager();
         return $this->twig->render('Home/item_details.html.twig', [
             'item' => $itemManager->selectOneById(1)
         ]);
@@ -80,6 +88,17 @@ class HomeController extends AbstractController
                     $item['file'] = $fileName;
                 }
             }
+        }
+    }
+
+    private function validateByField(
+        array $item,
+        string $field,
+        string $filedName,
+        array &$errors,
+    ): void {
+        if (empty($item[$field])) {
+            $errors[$field] = 'Le champ ' . $filedName . ' est obligatoire.';
         }
     }
 
