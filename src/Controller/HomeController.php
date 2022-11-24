@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Model\ItemManager;
 use App\Model\RegionManager;
 use App\Model\CategoryManager;
+use App\Model\UserManager;
 
 class HomeController extends AbstractController
 {
@@ -33,6 +34,22 @@ class HomeController extends AbstractController
             'regions' => $regionManager->selectAll(),
             'errors' => $errors
         ]);
+    }
+
+    public function login()
+    {
+        if ($_SERVER["REQUEST_METHOD"] === 'POST') {
+            $userLog = array_map('trim', $_POST);
+            $userLog = array_map('htmlentities', $userLog);
+
+            $userManager = new UserManager();
+
+            $userCheck = $userManager->selectByOneByPseudo($userLog['pseudo']);
+            if ($userCheck && password_verify($userLog['password'], $userCheck['password'])) {
+                $_SESSION['user_id'] = $userCheck['id'];
+                header('Location: /');
+            }
+        }
     }
 
     public function validation(): string

@@ -6,10 +6,10 @@ CREATE TABLE `user` (
 );
 
 INSERT INTO user (`id`, `pseudo`, `password`)
-VALUES ('1', 'Nem', 'mdp'),
-('2', 'Meg', 'mdp'),
-('3', 'Axou', 'mdp'),
-('4', 'Nico', 'mdp');
+VALUES ('1', 'Nem', '$2y$10$Hd6KPuyV9B68VhL.ZSslWuYELv20Fe8NR0HUwzOkNJAFq0spg9lwi'),
+('2', 'Meg', '$2y$10$Hd6KPuyV9B68VhL.ZSslWuYELv20Fe8NR0HUwzOkNJAFq0spg9lwi'),
+('3', 'Axou', '$2y$10$Hd6KPuyV9B68VhL.ZSslWuYELv20Fe8NR0HUwzOkNJAFq0spg9lwi'),
+('4', 'Nico', '$2y$10$Hd6KPuyV9B68VhL.ZSslWuYELv20Fe8NR0HUwzOkNJAFq0spg9lwi');
 
 
 CREATE TABLE `item` (
@@ -51,12 +51,12 @@ CREATE TABLE `category` (
 );
 
 INSERT INTO `category` (`id`, `name`, `image`)
-VALUES ('1', 'Les plus moches', 'mdp'),
-('2', 'Les plus sales', 'mdp'),
-('3', 'Les pires accueils', 'mdp'),
-('4', 'Les plus bruyants', 'mdp'),
-('5', 'Les pires spécialités', 'mdp'),
-('6', 'Les pires traditions', 'mdp');
+VALUES ('1', 'Les plus moches', ''),
+('2', 'Les plus sales', ''),
+('3', 'Les pires accueils', ''),
+('4', 'Les plus bruyants', ''),
+('5', 'Les pires spécialités', ''),
+('6', 'Les pires traditions', '');
 
 
 CREATE TABLE `item_category` (
