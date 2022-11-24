@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\AddItemManager;
+
 class HomeController extends AbstractController
 {
     /**

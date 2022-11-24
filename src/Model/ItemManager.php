@@ -8,7 +8,8 @@ class AddItemManager extends AbstractManager
 
     public function addItem(array $item)
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . static::TABLE . " (`name`, `adress`, `region_id`, `image`, `description` `user_id` `postcode`) 
+        $statement = $this->pdo->prepare("INSERT INTO " . static::TABLE .
+            " (`name`, `adress`, `region_id`, `image`, `description` `user_id` `postcode`) 
         VALUES (:name, :adress, :region, :image, :description, :id, :postcode)");
         $statement->bindValue(':name', $item['title'], \PDO::PARAM_STR);
         $statement->bindValue(':adress', $item['address'], \PDO::PARAM_STR);
