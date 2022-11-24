@@ -36,10 +36,18 @@
     border: 1px solid var(--background-color-khaki);
 }
 
-.card .unicorn {
+.card .counter {
+    margin: 0 .5rem;
+}
+
+.card .unicorn,
+.card .poop {
     width: 2rem;
     text-decoration: none;
+    pointer-events: none;
 }
+
+
 
 .homepage h2 {
     text-align: center;
