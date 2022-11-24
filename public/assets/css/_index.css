@@ -41,3 +41,10 @@
     text-align: center;
     margin: 2rem auto;
 }
+
+.card .count {
+    display: inline-flex;
+    border: 1px solid var(--background-color-linen);
+    border-radius: 2px;
+    align-items: center;
+}
