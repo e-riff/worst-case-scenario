@@ -2,33 +2,23 @@
 
 namespace App\Model;
 
-use PDO;
-
 class ItemManager extends AbstractManager
 {
     public const TABLE = 'item';
 
-    /**
-     * Insert new item in database
-     */
-    public function insert(array $item): int
+    public function addItem(array $item)
     {
-        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`title`) VALUES (:title)");
-        $statement->bindValue('title', $item['title'], PDO::PARAM_STR);
-
+        $statement = $this->pdo->prepare("INSERT INTO " . static::TABLE .
+            " (`name`, `address`, `region_id`, `image`, `description`, `user_id`, `postcode`) 
+        VALUES (:name, :address, :region_id, :image, :description, :id, :postcode)");
+        $statement->bindValue(':name', $item['title'], \PDO::PARAM_STR);
+        $statement->bindValue(':address', $item['address'], \PDO::PARAM_STR);
+        $statement->bindValue(':region_id', $item['region'], \PDO::PARAM_INT);
+        $statement->bindValue(':image', $item['image'], \PDO::PARAM_STR);
+        $statement->bindValue(':description', $item['description'], \PDO::PARAM_STR);
+        $statement->bindValue(':postcode', $item['postcode'], \PDO::PARAM_INT);
+        $statement->bindValue(':id', $item['id'], \PDO::PARAM_INT);
         $statement->execute();
-        return (int)$this->pdo->lastInsertId();
-    }
-
-    /**
-     * Update item in database
-     */
-    public function update(array $item): bool
-    {
-        $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `title` = :title WHERE id=:id");
-        $statement->bindValue('id', $item['id'], PDO::PARAM_INT);
-        $statement->bindValue('title', $item['title'], PDO::PARAM_STR);
-
-        return $statement->execute();
+        return $this->pdo->lastInsertId();
     }
 }

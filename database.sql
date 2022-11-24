@@ -5,7 +5,7 @@ CREATE TABLE `user` (
     UNIQUE KEY (`pseudo`)
 );
 
-INSERT INTO `user` (`id`, `pseudo`, `password`)
+INSERT INTO user (`id`, `pseudo`, `password`)
 VALUES ('1', 'Nem', 'mdp'),
 ('2', 'Meg', 'mdp'),
 ('3', 'Axou', 'mdp'),
@@ -15,15 +15,14 @@ VALUES ('1', 'Nem', 'mdp'),
 CREATE TABLE `item` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(100) NOT NULL,
-  `adresse` VARCHAR(255),
-  `zip_code` VARCHAR(255),
-  `region` VARCHAR(10),
+  `address` VARCHAR(255),
+  `postcode` INT,
+  `region_id` INT,
   `image` VARCHAR(255),
-  `description` LONGTEXT,
-  `creator` INT,
-    CONSTRAINT fk_user_item FOREIGN KEY (creator) REFERENCES user(id)
+  `description` TEXT,
+  `user_id` INT,
+    CONSTRAINT fk_user_item FOREIGN KEY (user_id) REFERENCES user(id)
 );
-
 
 CREATE TABLE `like_or_dislike` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -67,3 +66,24 @@ CREATE TABLE `item_category` (
   CONSTRAINT fk_item_category1 FOREIGN KEY (item_id) REFERENCES item(id),
   CONSTRAINT fk_item_category2 FOREIGN KEY (category_id) REFERENCES category(id)
 );
+
+-- TABLE REGION
+CREATE TABLE `region` (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(60) NOT NULL
+);
+
+INSERT INTO region
+VALUES (1, 'Auvergne-Rhône-Alpes'),
+       (2, 'Bourgogne-Franche-Comté'),
+       (3, 'Bretagne'),
+       (4, 'Centre-Val de Loire'),
+       (5, 'Corse'),
+       (6, 'Grand Est'),
+       (7, 'Hauts-de-France'),
+       (8, 'Ile-de-France'),
+       (9, 'Normandie'),
+       (10, 'Nouvelle-Aquitaine'),
+       (11, 'Occitanie'),
+       (12, 'Pays de la Loire'),
+       (13, "Provence-Alpes-Côte d'Azur");
