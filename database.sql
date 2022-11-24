@@ -1,63 +1,69 @@
--- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
---
--- Client :  localhost
--- Généré le :  Jeu 26 Octobre 2017 à 13:53
--- Version du serveur :  5.7.19-0ubuntu0.16.04.1
--- Version de PHP :  7.0.22-0ubuntu0.16.04.1
+CREATE TABLE `user` (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `pseudo` VARCHAR(45) NOT NULL,
+    `password` VARCHAR(255) NOT NULL,
+    UNIQUE KEY (`pseudo`)
+);
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
+INSERT INTO `user` (`id`, `pseudo`, `password`)
+VALUES ('1', 'Nem', 'mdp'),
+('2', 'Meg', 'mdp'),
+('3', 'Axou', 'mdp'),
+('4', 'Nico', 'mdp');
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de données :  `simple-mvc`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `item`
---
 
 CREATE TABLE `item` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(100) NOT NULL,
+  `adresse` VARCHAR(255),
+  `zip_code` VARCHAR(255),
+  `region` VARCHAR(10),
+  `image` VARCHAR(255),
+  `description` LONGTEXT,
+  `creator` INT,
+    CONSTRAINT fk_user_item FOREIGN KEY (creator) REFERENCES user(id)
+);
 
---
--- Contenu de la table `item`
---
 
-INSERT INTO `item` (`id`, `title`) VALUES
-(1, 'Stuff'),
-(2, 'Doodads');
+CREATE TABLE `like_or_dislike` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `user_id` INT NOT NULL,
+  `item_id` INT NOT NULL,
+  `good_or_bad` INT NOT NULL,
+  CONSTRAINT fk_user_has_item1 FOREIGN KEY (user_id) REFERENCES user(id),
+  CONSTRAINT fk_user_has_item2 FOREIGN KEY (item_id) REFERENCES item(id)
+);
 
---
--- Index pour les tables exportées
---
 
---
--- Index pour la table `item`
---
-ALTER TABLE `item`
-  ADD PRIMARY KEY (`id`);
+CREATE TABLE `review` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `date` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `item_id` INT NOT NULL,
+  CONSTRAINT fk_user_review1 FOREIGN KEY (user_id) REFERENCES user(id),
+  CONSTRAINT fk_user_review2 FOREIGN KEY (item_id) REFERENCES item(id)
+);
 
---
--- AUTO_INCREMENT pour les tables exportées
---
 
---
--- AUTO_INCREMENT pour la table `item`
---
-ALTER TABLE `item`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE TABLE `category` (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `name` VARCHAR(45) NOT NULL,
+    `image` VARCHAR(255) NOT NULL
+);
+
+INSERT INTO `category` (`id`, `name`, `image`)
+VALUES ('1', 'Les plus moches', 'mdp'),
+('2', 'Les plus sales', 'mdp'),
+('3', 'Les pire accueils', 'mdp'),
+('4', 'Les plus bruyants', 'mdp'),
+('5', 'Les pires spécialités', 'mdp'),
+('6', 'Les pires traditions', 'mdp');
+
+
+CREATE TABLE `item_category` (
+  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `item_id` INT NOT NULL,
+  `category_id` INT NOT NULL,
+  CONSTRAINT fk_item_category1 FOREIGN KEY (item_id) REFERENCES item(id),
+  CONSTRAINT fk_item_category2 FOREIGN KEY (category_id) REFERENCES category(id)
+);
