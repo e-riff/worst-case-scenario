@@ -1,6 +1,45 @@
 {% extends 'layout.html.twig' %}
+{% block title %}
+	{{ parent() }}
+	Welcome
+{% endblock %}
+
 
 {% block content %}
-    <h1>Hello Wilder !</h1>
-    <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p>
+	<main class="homepage">
+		<div class="searching container-fluid">
+			<form class="form-inline col-3" action="/recherche/" method="get">
+				<fieldset>
+					<div class="input-group">
+						<input id="oSaisie" name="oSaisie" type="text" class="form-control" aria-label="Saisie de mots clés" required="required">
+						<div class="input-group-append">
+							<button class="btn btn-primary" type="submit">Recherche</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+			<h1 class="col-5">Le peer du pire
+			</h1>
+			<p class="col-3">Partage tes pires expériences</p>
+		</div>
+
+		<div class="category">
+			{% for category in categories %}
+				<button type="button" class="btn btn-primary p-3">{{category.name}}</button>
+			{% endfor %}
+		</div>
+
+		<div class="wrapper">
+			{% for number in 1..20 %}
+				{% include "/Include/_card.html.twig" with {index: loop.index} %}
+
+			{% endfor %}
+		</div>
+		<h2>Vous avez touché le fond</h2>
+
+	</main>
+{% endblock %}
+
+{% block javascript %}
+	<script src="/assets/script/script.js"></script>
 {% endblock %}
