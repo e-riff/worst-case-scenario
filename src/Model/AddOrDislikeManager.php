@@ -21,7 +21,7 @@ class AddOrDislikeManager extends AbstractManager
             $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
                 "(item_id, user_id, good_or_bad) VALUES (:item_id, :user_id, :good_or_bad)");
             $statement->bindValue('item_id', $itemId, PDO::PARAM_INT);
-            $statement->bindValue('user_id', $_SESSION['user_id'], PDO::PARAM_INT);
+            $statement->bindValue('userId', $_SESSION['user_id'], PDO::PARAM_INT);
             $statement->bindValue(':good_or_bad', $newLikeValue, PDO::PARAM_INT);
             $statement->execute();
             return 'Inserted';
