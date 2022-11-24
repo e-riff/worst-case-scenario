@@ -11,7 +11,7 @@ class AddItemManager extends AbstractManager
         $statement = $this->pdo->prepare("INSERT INTO " . static::TABLE . " (`name`, `adress`, `region_id`, `image`, `description` `user_id` `postcode`) 
         VALUES (:name, :adress, :region, :image, :description, :id, :postcode)");
         $statement->bindValue(':name', $item['title'], \PDO::PARAM_STR);
-        $statement->bindValue(':adress', $item['address'], \PDO::PARAM_STR);
+        $statement->bindValue(':adress', $item['adress'], \PDO::PARAM_STR);
         $statement->bindValue(':region', $item['region'], \PDO::PARAM_INT);
         $statement->bindValue(':image', $item['image'], \PDO::PARAM_STR);
         $statement->bindValue(':description', $item['description'], \PDO::PARAM_STR);

@@ -1,0 +1,72 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+<h2>Ajoutez votre PEER expérience !</h2>
+
+<section class="container align-content-center">
+
+    <h3>Pour partager cette expérience avec la PEER communauté, merci de remplir le formulaire :</h3>
+
+    <img src="https://images.pexels.com/photos/4629626/pexels-photo-4629626.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+        class="d-block mx-auto mb-2 w-25 " alt="pouce en bas">
+    <form class="container text-center shadow p-3 mb-5 col-lg-6 bg-body rounded" method="POST">
+        <div class="row g-3">
+
+            <div class=" mb-3 col-12 col-xs-12 col-md-12 col-lg-6">
+                <label class="form-label" for="localisation">Choisissez votre région</label>
+                <select class="form-select p-3 mb-3" name="region" id="region" required>
+                    <option class="optionSearch" value="">-</option>
+                    {% for region in regions %}
+                    <option class="optionSearch" value=" {{ region.id }} ">{{region.name}}</option>
+                    {% endfor %}
+                </select>
+                {% if errors.region %}
+                <div class="text-danger small">{{errors.region}}</div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3 col-12 col-xs-12 col-md-12 col-lg-6 ">
+                <label for="postcode" class="form-label">Code postal</label>
+                <input type="text" class="form-control shadow-sm p-3 mb-2 bg-body rounded" id="postcode" name="postcode"
+                    placeholder="4 rue du mauvais goût" arial-label="code postal" required>
+                {% if errors.postcode %}
+                <div class="text-danger small">{{errors.postcode}}</div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3 col-12 col-xs-12 col-md-12 col-lg-6 ">
+                <label for="address" class="form-label">Rue et complément d'adresse</label>
+                <input type="text" class="form-control shadow-sm p-3 mb-2 bg-body rounded" id="address" name="address"
+                    placeholder="4 rue du mauvais goût" arial-label="adresse" required>
+                {% if errors.address %}
+                <div class="text-danger small">{{errors.address}}</div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3 col-12 col-xs-12 col-md-12 col-lg-6 ">
+                <label for="title" class="form-label">Titre</label>
+                <input type="text" class="form-control shadow-sm p-3 mb-2 bg-body rounded" id="title" name="title"
+                    placeholder="Wild Code Motel : le pire de tous !" arial-label="titre" required>
+                {% if errors.title %}
+                <div class="text-danger small">{{errors.title}}</div>
+                {% endif %}
+            </div>
+
+            <div class="mb-3 col-lg-12">
+                <label for="description" class="form-label">Votre description</label>
+                <textarea class="form-control shadow-sm p-3 mb-5 bg-body rounded" name="description" id=" description"
+                    rows=" 3" placeholder="C'était vraiment horrible... A ne jamais refaire !"
+                    arial-label=" description" required></textarea>
+                {% if errors.description %}
+                <div class="text-danger small">{{errors.description}}</div>
+                {% endif %}
+            </div>
+
+            <div>
+                <input type="submit" class="btn btn-primary col-12" id="submit"></input>
+            </div>
+
+        </div>
+    </form>
+</section>
+{% endblock %}

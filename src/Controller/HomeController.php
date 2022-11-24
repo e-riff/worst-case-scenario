@@ -11,4 +11,9 @@ class HomeController extends AbstractController
     {
         return $this->twig->render('Home/index.html.twig');
     }
+
+    public function addItem(): string
+    {
+        return $this->twig->render('Home/add_item.html.twig');
+    }
 }
