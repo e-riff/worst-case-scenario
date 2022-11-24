@@ -18,6 +18,7 @@ CREATE TABLE `item` (
   `address` VARCHAR(255),
   `postcode` INT,
   `region_id` INT,
+  `category_id`INT,
   `image` VARCHAR(255),
   `description` TEXT,
   `user_id` INT,
@@ -53,21 +54,20 @@ CREATE TABLE `category` (
 INSERT INTO `category` (`id`, `name`, `image`)
 VALUES ('1', 'Les plus moches', 'mdp'),
 ('2', 'Les plus sales', 'mdp'),
-('3', 'Les pire accueils', 'mdp'),
+('3', 'Les pires accueils', 'mdp'),
 ('4', 'Les plus bruyants', 'mdp'),
 ('5', 'Les pires spécialités', 'mdp'),
 ('6', 'Les pires traditions', 'mdp');
 
 
-CREATE TABLE `item_category` (
-  `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `item_id` INT NOT NULL,
-  `category_id` INT NOT NULL,
-  CONSTRAINT fk_item_category1 FOREIGN KEY (item_id) REFERENCES item(id),
-  CONSTRAINT fk_item_category2 FOREIGN KEY (category_id) REFERENCES category(id)
-);
+-- CREATE TABLE `item_category` (
+--   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--   `item_id` INT NOT NULL,
+--   `category_id` INT NOT NULL,
+--   CONSTRAINT fk_item_category1 FOREIGN KEY (item_id) REFERENCES item(id),
+--   CONSTRAINT fk_item_category2 FOREIGN KEY (category_id) REFERENCES category(id)
+-- );
 
--- TABLE REGION
 CREATE TABLE `region` (
     `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(60) NOT NULL

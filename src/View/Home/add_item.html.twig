@@ -1,6 +1,7 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
+
 	<h1>Ajoutez votre PEER expérience !</h1>
 
 	<section class="container align-content-center">
@@ -8,7 +9,7 @@
 
 		<p class="my-3 text-center">Pour partager cette expérience avec la PEER communauté, merci de remplir le formulaire :</p>
 
-		<form class="container text-center shadow p-3 mb-5 col-lg-6 bg-body rounded" method="POST">
+		<form class="container text-center shadow p-3 mb-5 col-lg-6 bg-body rounded" method="POST" enctype="multipart/form-data">
 			<div class="row g-3">
 
 				<div class=" mb-3 col-12 col-xs-12 col-md-12 col-lg-6">
@@ -41,11 +42,24 @@
 					{% endif %}
 				</div>
 
-				<div class="mb-3 col-lg-12">
+				<div class=" mb-3 col-12 col-xs-12 col-md-12 col-lg-6">
+					<label class="form-label" for="localisation">Quel était le pire ?</label>
+					<select class="form-select p-3 mb-3" name="category" id="category" required>
+						<option class="optionSearch" value="">-</option>
+						{% for category in categories %}
+							<option class="optionSearch" value=" {{ category.id }} ">{{category.name}}</option>
+						{% endfor %}
+					</select>
+					{% if category.category %}
+						<div class="text-danger small">{{category.category}}</div>
+					{% endif %}
+				</div>
+
+				<div class="mb-3 col-lg-6">
 					<div class="image">
 						<div class="mb-3">
-							<label for="image" class="form-label">Photo du lieu</label>
-							<input name="image" class="form-control" type="file" id="image">
+							<label for="file" class="form-label">Photo du lieu</label>
+							<input name="file" class="form-control" type="file" id="file">
 							{% if errors.file_extension %}
 								<div class="text-danger">
 									{{errors.file_extension}}

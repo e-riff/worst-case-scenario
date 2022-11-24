@@ -1,6 +1,7 @@
 #oSaisie {
     background-color: var(--background-color-lightyellow);
 }
+
 .homepage .container-fluid {
     display: inline-flex;
     text-align: center;
@@ -54,6 +55,3 @@
 .card-body {
     background-color: var(--background-color-linen);
 }
-
-
-
