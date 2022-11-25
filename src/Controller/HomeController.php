@@ -7,6 +7,7 @@ use App\Model\RegionManager;
 use App\Model\CategoryManager;
 use App\Model\UserManager;
 use App\Model\AddOrDislikeManager;
+use App\Model\SearchManager;
 
 class HomeController extends AbstractController
 {
@@ -17,7 +18,17 @@ class HomeController extends AbstractController
     {
         $catergoryManager = new CategoryManager();
         $categories = $catergoryManager->selectAll();
+        if (isset($_GET['oSaisie'])) {
+            $searchManager = new SearchManager();
+            $searchedItems = $searchManager->searchEngine($_GET['oSaisie']);
+            $likeController = new AddOrDislikeManager();
+            $items = $likeController->sumLike($searchedItems);
 
+            return $this->twig->render(
+                'Home/index.html.twig',
+                ["categories" => $categories, "items" => $items]
+            );
+        }
         $itemManager = new ItemManager();
         $items = $itemManager->selectAllWithLike();
 

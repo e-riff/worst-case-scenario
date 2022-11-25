@@ -10,7 +10,7 @@
 $_SESSION['user_id'] = 1;
 
 return [
-    '' => ['HomeController', 'index',],
+    '' => ['HomeController', 'index',['oSaisie']],
     'addItem' => ['HomeController', 'addItem'],
     'itemDetails' => ['HomeController', 'itemDetails', ['id']],
     'items' => ['ItemController', 'index',],
@@ -21,5 +21,5 @@ return [
     'validation' => ['HomeController', 'validation'],
     'likeOrDislike' => ['AddOrDislikeController', 'likeOrDislike', ['itemId', 'newLikeValue']],
     'home/login' => ['HomeController', 'login'],
-    //'test' => ['AddOrDislikeController', 'likeOrDislike', ['itemId', 'newLikeValue']],
+    'index/searchResults' => ['SearchController', 'getResearch']
 ];
