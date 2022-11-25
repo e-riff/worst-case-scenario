@@ -38,8 +38,14 @@
 }
 
 .card-img-top {
-    max-height: 300px;
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
 
+}
+
+.image-size-index {
+    height: 33%;
 }
 
 .card .counter {
@@ -66,12 +72,13 @@
     margin: 2rem auto;
 }
 
-.card .count {
-    display: inline-flex;
-    border: 1px solid var(--background-color-khaki);
-    border-radius: 2px;
+.card .test .count {
+    display: block;
+    display: flex;
+    justify-content: center;
 }
 
 .card-body {
     background-color: var(--background-color-linen);
+
 }

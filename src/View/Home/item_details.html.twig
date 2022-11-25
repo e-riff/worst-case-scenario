@@ -6,15 +6,35 @@
 
 	<div class="container">
 		<div class="itemCard card text-center mb-3">
-			<img src="/uploads/{{item.image}}" class="itemImg d-block mx-auto my-2 rounded" alt="image">
-
-			<p class="card-text">{{item.description}}</p>
+			<div>
+				<img src="/uploads/{{item.image}}" class="itemImg d-block mb-3 rounded" alt="image">
+				<p class="card-postcode mx-2">{{item.postcode}}</p>
+				<p class="card-address mx-2">
+					<strong>{{item.address}}</strong>
+				</p>
+				<p class="card-text mx-2">{{item.description}}</p>
+			</div>
+			<div class="test">
+				<div class="count mx-auto mt-3">
+					<a data-item="{{item.id}}" data-val="-1" href=" #">
+						<img class="unicorn" {% if likes.good_or_bad == -1 %} src="/assets/images/unicorn.png" {% else %} src="/assets/images/unicornBW.png" {% endif %}>
+					</a>
+					<p data-item="{{item.id}}" class="counter">{{item.favSum}}</p>
+					<a data-item="{{item.id}}" data-val="1" href="#">
+						<img class="poop" {% if likes.good_or_bad == 1 %} src="/assets/images/pooFull.png" {% else %} src="/assets/images/pooEmpty.png" {% endif %}>
+					</a>
+				</div>
+			</div>
 
 			<div class="ab_button text-center">
-				<a href="/" type="button" class="btn btn-primary btn-lg my-3">
+				<a href="/" type="button" class="btn btn-lg my-3">
 					Accueil</a>
 			</div>
 		</div>
 	</div>
 
+{% endblock %}
+
+{% block javascript %}
+	<script src="/assets/scripts/home.js"></script>
 {% endblock %}
