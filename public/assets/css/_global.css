@@ -14,7 +14,16 @@ h1 {
     margin-top: 2rem;
     text-align: center;
 }
+
 .btn {
     background-color: var(--color-khaki);
     color: var(--color-lightyellow);
+}
+
+.itemCard {
+    width: 50rem;
+}
+
+.itemImg {
+    max-height: 50vh;
 }

@@ -13,10 +13,12 @@ class ItemManager extends AbstractManager
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
             " (`name`, `address`, `region_id`, `image`, `description`, `user_id`, `postcode`)
         VALUES (:name, :address, :region_id, :image, :description, :id, :postcode)");
+
         $statement->bindValue(':name', $item['title'], \PDO::PARAM_STR);
         $statement->bindValue(':address', $item['address'], \PDO::PARAM_STR);
         $statement->bindValue(':region_id', $item['region'], \PDO::PARAM_INT);
-        $statement->bindValue(':image', $item['image'], \PDO::PARAM_STR);
+        $statement->bindValue(':category', $item['category'], \PDO::PARAM_INT);
+        $statement->bindValue(':image', $item['file'], \PDO::PARAM_STR);
         $statement->bindValue(':description', $item['description'], \PDO::PARAM_STR);
         $statement->bindValue(':postcode', $item['postcode'], \PDO::PARAM_INT);
         $statement->bindValue(':id', $item['id'], \PDO::PARAM_INT);
