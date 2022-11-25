@@ -1,14 +1,18 @@
-<div class="card">
-	<img class="card-img-top" src="/uploads/dog.webp" alt="Card image cap">
+<div class="card shadow h-100">
 
+	<img class="card-img-top" src="/uploads/{{ item.image }}" alt="Card image cap">
 	<div class="card-body">
-		<h5 class="card-title">Card
-			{{ loop.index }}</h5>
-		<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+		<h5 class="card-title">{{ item.name }}</h5>
+		<p class="card-postcode">{{item.address}}</p>
+		<p class="card-text">{{item.description}}</p>
 		<div class="count">
-			<a data-item="{{loop.index}}" data-val="-1" href=" #"><img class="unicorn" src="/assets/images/unicorn.png"></a>
-			<p class="counter">1423</p>
-			<a data-item="{{loop.index}}" data-val="1" href="#"><img class="poop" src="/assets/images/favicon.png"></a>
+			<a data-item="{{item.id}}" data-val="-1" href=" #">
+				<img class="unicorn" {% if item.good_or_bad == -1 %} src="/assets/images/unicorn.png" {% else %} src="/assets/images/unicornBW.png" {% endif %}>
+			</a>
+			<p class="counter">1.423</p>
+			<a data-item="{{item.id}}" data-val="1" href="#">
+				<img class="poop" {% if item.good_or_bad == 1 %} src="/assets/images/pooFull.png" {% else %} src="/assets/images/pooEmpty.png" {% endif %}>
+			</a>
 		</div>
 	</div>
 </div>

@@ -12,21 +12,21 @@ class AddOrDislikeManager extends AbstractManager
     {
         $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE .
             " WHERE item_id=:itemId AND user_id=:userId");
-        $statement->bindValue('item_id', $itemId, PDO::PARAM_INT);
+        $statement->bindValue('itemId', $itemId, PDO::PARAM_INT);
         $statement->bindValue('userId', $_SESSION['user_id'], PDO::PARAM_INT);
         $statement->execute();
         $oldLikeValue = $statement->fetch();
 
-        if (is_null($oldLikeValue)) {
+        if (!$oldLikeValue) {
             $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
                 "(item_id, user_id, good_or_bad) VALUES (:item_id, :user_id, :good_or_bad)");
             $statement->bindValue('item_id', $itemId, PDO::PARAM_INT);
-            $statement->bindValue('userId', $_SESSION['user_id'], PDO::PARAM_INT);
+            $statement->bindValue('user_id', $_SESSION['user_id'], PDO::PARAM_INT);
             $statement->bindValue(':good_or_bad', $newLikeValue, PDO::PARAM_INT);
             $statement->execute();
-            return 'Inserted';
+            return 'inserted';
         } else {
-            if ($oldLikeValue['good_or_bad'] == $newLikeValue) {
+            if ($oldLikeValue['good_or_bad'] == intval($newLikeValue)) {
                 $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
                 $statement->bindValue('id', $oldLikeValue["id"], PDO::PARAM_INT);
                 $statement->execute();
@@ -40,5 +40,16 @@ class AddOrDislikeManager extends AbstractManager
                 return "updated";
             }
         }
+    }
+
+    public function sumLike(array $items)
+    {
+        foreach ($items as &$item) {
+            $statement = $this->pdo->query("SELECT sum(l.good_or_bad) FROM " . self::TABLE . " AS l " .
+                "WHERE l.item_id = " . $item['id']);
+            $item['favSum']
+                = $statement->fetchAll();
+        }
+        return $items;
     }
 }

@@ -16,7 +16,7 @@ CREATE TABLE `item` (
   `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(100) NOT NULL,
   `address` VARCHAR(255),
-  `postcode` INT,
+  `postcode` CHAR(15),
   `region_id` INT,
   `category_id`INT,
   `image` VARCHAR(255),
@@ -91,4 +91,12 @@ VALUES (1, 'Auvergne-Rhône-Alpes'),
 INSERT INTO `item` (`id`, `name`, `address`, `postcode`, `image`, `description`)
 VALUES
 (1, 'Montalieu-Vercieu', 'Isère', '38390', 'montalieu.jpg', "En novembre 2021, le village de Montalieu-Vercieu, dans l'Isère, a été distingué par l'association Paysages de France par le Prix de la France moche, et a donc été classé parmi les villages les plus laids de l'Hexagone."),
-(2, "L'espace Méditerranée de Perpignan", 'Perpignan', '66000', 'espace-perpignan.jpg', "Comme un ovni qui se serait posé là par hasard, on se demande vraiment ce que fabrique cette grosse boule rouge au milieu de palmiers et de cactus… Petit conseil à nos amis perpignanais : soyez prêts à recevoir les Aliens, il voudront récupérer leur truc un jour ou l’autre…");
+(2, "L'espace Méditerranée de Perpignan", 'Perpignan', '66000', 'espace-perpignan.jpg', "Comme un ovni qui se serait posé là par hasard, on se demande vraiment ce que fabrique cette grosse boule rouge au milieu de palmiers et de cactus… Petit conseil à nos amis perpignanais : soyez prêts à recevoir les Aliens, il voudront récupérer leur truc un jour ou l’autre…"),
+(3, 'Paris', 'Ile-de-France', '75000', 'paris.jpg', "La propreté ou plutôt la saleté est un vrai problème à Paris. En cinquante la poubelle des ménages a doublé de volume ! De plus, malgré les efforts des agents de la ville, les rues sont de vrais dépotoirs dans certains quartiers. Les poubelles s'entassent, les rats se baladent tranquillement. Les odeurs d’urine dans la capitale sont fréquentes et pourtant il n’est pas si compliqué de trouver des toilettes dans Paris."),
+(4, 'Marseille', "Provence-Alpes-Côte d'Azur", '13000', 'marseille.jpeg', "Les habitants de Marseille ne sont pas réputés pour être des personnes qui respectent beaucoup l’environnement. Pour preuve, ils ignorent systématiquement la présence des poubelles dans leur ville. Cette culture est tellement ancrée en eux qu’ils sont capables de déposer leur ordure juste à côté d’une poubelle."),
+(5, 'La Corse', '', '2A et 2B', 'corse.webp', "Les Corses aiment garder pour eux leur Île de Beauté, et on comprend bien pourquoi d’ailleurs. Du coup, l’accueil réservé aux Continentaux n’est pas toujours le plus aimable. Un peu glacial même voire carrément chambreur."),
+(6, 'La Bretagne', '', '36110', 'bretagne.jpg', "Parmi toutes les régions de France, la Bretagne paraît austère de prime abord.  Le premier contact est souvent difficile avec un Breton, surtout pour les gars du Sud.  On lui tape pas sur l’épaule comme ça au Breton, on lui claque pas la bise non plus d’entrée. C’est bien connu, l’amitié d’un Breton, ça se mérite !"),
+(7, 'La rue Gabriel-Péri', 'Toulouse', '31000', 'toulouse.jpg', "La rue Gabriel-Péri c'est un peu Docteur Jekyll et Mister Hyde, elle a un double visage. Avec une concentration massive d'établissements qui proposent souvent des boissons alcoolisées bon marché, elle attire une clientèle jeune, étudiante bien souvent, avide de fête et de consommations à petits prix. C'est la porte ouverte à toutes les dérives."),
+(8, 'Batignolles', 'Paris', '75017', 'batignolles.jpg', "Cela peut sembler contre-intuitif mais du fait de la réverbération du bruit sur les façades, les étages élevés ne sont pas les plus calmes et Batignolles en paie les frais avec pas moins de 55,7 dB de nuisances sonores."),
+(9, 'La tartine de camembert au café', 'Normandie', '', 'normandie.jpg', "La tartine de camembert trempée dans le café au petit dej demeure un mystère pour la plupart des papilles. Notons que la Normandie s’illustre déjà au palmarès des spécialités culinaires peu ragoûtantes avec les tripes à la mode de Caen. La petite particularité du camembert dans le café, c’est qu’il a fait l’objet de la création d’une véritable confrérie."),
+(10, 'La sanguette de canard', 'Nouvelle-Aquitaine', '', 'nouvelle-aquitaine.webp', "Le Périgord nous a habitués à des plats de grande classe, surtout avec du canard. Foie gras, magrets… mais la sanguette est un peu l’exception qui confirme la règle. Qu’est-ce donc que cette diablerie ? Une galette de sang de canard coagulé cuite avec de l’ail, du persil et du lard.");

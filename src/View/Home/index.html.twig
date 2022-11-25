@@ -4,8 +4,10 @@
 	Welcome
 {% endblock %}
 
-
 {% block content %}
+	<pre>
+    {{ dump() }}
+</pre>
 	<main class="homepage">
 		<div class="searching container-fluid">
 			<form class="form-inline col-3" action="/recherche/" method="get">
@@ -31,8 +33,9 @@
 		</div>
 
 		<div class="wrapper">
-			{% for number in 1..20 %}
-				{% include "/Include/_card.html.twig" with {index: loop.index} %}
+			{% for item in items %}
+				{% include "/Include/_card.html.twig" %}
+
 
 			{% endfor %}
 		</div>
