@@ -42,13 +42,13 @@ class AddOrDislikeManager extends AbstractManager
         }
     }
 
-    public function sumLike(array $items)
+    public function sumLike($items)
     {
         foreach ($items as &$item) {
-            $statement = $this->pdo->query("SELECT sum(l.good_or_bad) FROM " . self::TABLE . " AS l " .
+            $statement = $this->pdo->query("SELECT sum(l.good_or_bad) AS favSum FROM " . self::TABLE . " AS l " .
                 "WHERE l.item_id = " . $item['id']);
-            $item['favSum']
-                = $statement->fetchAll();
+            $result = $statement->fetch();
+            $item['favSum'] = $result['favSum'];
         }
         return $items;
     }
