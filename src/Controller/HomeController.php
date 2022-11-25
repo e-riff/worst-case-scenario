@@ -6,6 +6,7 @@ use App\Model\ItemManager;
 use App\Model\RegionManager;
 use App\Model\CategoryManager;
 use App\Model\UserManager;
+use App\Model\AddOrDislikeManager;
 
 class HomeController extends AbstractController
 {
@@ -18,7 +19,12 @@ class HomeController extends AbstractController
         $categories = $catergoryManager->selectAll();
         $itemManager = new ItemManager();
         $items = $itemManager->selectAllWithLike();
-        return $this->twig->render('Home/index.html.twig', ["categories" => $categories, "items" => $items]);
+        $addOrDislikeController = new AddOrDislikeManager();
+        $favSum = $addOrDislikeController->sumLike($items);
+        return $this->twig->render(
+            'Home/index.html.twig',
+            ["categories" => $categories, "items" => $items, "favSum" => $favSum]
+        );
     }
 
     public function addItem(): string

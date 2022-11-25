@@ -24,7 +24,7 @@ class AddOrDislikeManager extends AbstractManager
             $statement->bindValue('user_id', $_SESSION['user_id'], PDO::PARAM_INT);
             $statement->bindValue(':good_or_bad', $newLikeValue, PDO::PARAM_INT);
             $statement->execute();
-            return 'Inserted';
+            return 'inserted';
         } else {
             if ($oldLikeValue['good_or_bad'] == intval($newLikeValue)) {
                 $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE . " WHERE id=:id");
@@ -40,5 +40,16 @@ class AddOrDislikeManager extends AbstractManager
                 return "updated";
             }
         }
+    }
+
+    public function sumLike(array $items)
+    {
+        foreach ($items as &$item) {
+            $statement = $this->pdo->query("SELECT sum(l.good_or_bad) FROM " . self::TABLE . " AS l " .
+                "WHERE l.item_id = " . $item['id']);
+            $item['favSum']
+                = $statement->fetchAll();
+        }
+        return $items;
     }
 }

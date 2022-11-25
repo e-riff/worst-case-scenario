@@ -9,7 +9,7 @@ class AddOrDislikeController extends AbstractController
     public function likeOrDislike($itemId, $newLikeValue)
     {
         $addOrDislikeManager = new AddOrDislikeManager();
-        $result = $addOrDislikeManager->likeOrDislikeItem($itemId, $newLikeValue);
+        $result['response'] = $addOrDislikeManager->likeOrDislikeItem($itemId, $newLikeValue);
         return json_encode($result);
     }
 }

@@ -10,7 +10,9 @@
 				<img class="unicorn" {% if item.good_or_bad == -1 %} src="/assets/images/unicorn.png" {% else %} src="/assets/images/unicornBW.png" {% endif %}>
 			</a>
 			<p class="counter">1.423</p>
-			<a data-item="{{item.id}}" data-val="1" href="#"><img class="poop" {% if item.good_or_bad == 1 %} src="/assets/images/pooFull.png" {% else %} src="/assets/images/pooEmpty.png" {% endif %}></a>
+			<a data-item="{{item.id}}" data-val="1" href="#">
+				<img class="poop" {% if item.good_or_bad == 1 %} src="/assets/images/pooFull.png" {% else %} src="/assets/images/pooEmpty.png" {% endif %}>
+			</a>
 		</div>
 	</div>
 </div>
