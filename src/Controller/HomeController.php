@@ -69,7 +69,7 @@ class HomeController extends AbstractController
     {
         $itemManager = new ItemManager();
         return $this->twig->render('Home/item_details.html.twig', [
-            'item' => $itemManager->selectOneById(1)
+            'item' => $itemManager->selectOneById($_GET['id'])
         ]);
     }
 
