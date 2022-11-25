@@ -15,8 +15,11 @@ function ajaxRequest(itemId, newLikeValue) {
             return response.json()
         })
         .then(function (json) {
+            console.log(json.sumFav[0].favSum);
             const poop = document.querySelector(`a[data-item="${itemId}"] > img.poop`);
+            const counter = document.querySelector(`p.counter[data-item="${itemId}"]`);
             const unicorn = document.querySelector(`a[data-item="${itemId}"] > img.unicorn`)
+            console.log(counter);
             if (json.response == 'inserted' || json.response == 'updated') {
                 if (newLikeValue == 1) {
                     poop.setAttribute("src", "/assets/images/pooFull.png");
@@ -30,5 +33,6 @@ function ajaxRequest(itemId, newLikeValue) {
                 poop.setAttribute("src", "/assets/images/pooEmpty.png");
                 unicorn.setAttribute("src", "/assets/images/unicornBW.png");
             }
+            counter.innerHTML = json.sumFav[0].favSum;
         })
 }

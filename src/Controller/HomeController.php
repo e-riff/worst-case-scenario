@@ -17,13 +17,15 @@ class HomeController extends AbstractController
     {
         $catergoryManager = new CategoryManager();
         $categories = $catergoryManager->selectAll();
+
         $itemManager = new ItemManager();
         $items = $itemManager->selectAllWithLike();
-        $addOrDislikeController = new AddOrDislikeManager();
-        $favSum = $addOrDislikeController->sumLike($items);
+
+        $likeController = new AddOrDislikeManager();
+        $items = $likeController->sumLike($items);
         return $this->twig->render(
             'Home/index.html.twig',
-            ["categories" => $categories, "items" => $items, "favSum" => $favSum]
+            ["categories" => $categories, "items" => $items]
         );
     }
 
