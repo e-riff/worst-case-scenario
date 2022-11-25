@@ -5,12 +5,9 @@
 {% endblock %}
 
 {% block content %}
-	<pre>
-    {{ dump() }}
-</pre>
 	<main class="homepage">
 		<div class="searching container-fluid">
-			<form class="form-inline col-3" action="/recherche/" method="get">
+			<form class="form-inline col-3" action="{{searchResults}}" method="get">
 				<fieldset>
 					<div class="input-group">
 						<input id="oSaisie" name="oSaisie" type="text" class="form-control" aria-label="Saisie de mots clés" required="required">

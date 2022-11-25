@@ -20,5 +20,6 @@ return [
     'items/delete' => ['ItemController', 'delete',],
     'validation' => ['HomeController', 'validation'],
     'likeOrDislike' => ['AddOrDislikeController', 'likeOrDislike', ['itemId', 'newLikeValue']],
-    'home/login' => ['HomeController', 'login']
+    'home/login' => ['HomeController', 'login'],
+    'index/searchResults' => ['SearchController', 'getResearch']
 ];
