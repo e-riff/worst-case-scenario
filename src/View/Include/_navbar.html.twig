@@ -8,10 +8,12 @@
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				{% if user %}
-					<li>
+					<li class="add-disappointment">
 						<a href="/addItem">Ajouter une déception</a>
 					</li>
-					<li>deconnexion</li>
+					<li class="logout">
+                    <a href="">Déconnexion</a>
+                    </li>
 				{% else %}
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

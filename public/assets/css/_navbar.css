@@ -1,4 +1,13 @@
 nav {
     background-color: var(--background-color-khaki);
 }
-
+.logout a {
+    text-decoration: none;
+    color: var(--background-color-lightyellow);
+    margin-left: 2rem;
+}
+.add-disappointment a {
+    text-decoration: none;
+    color: var(--background-color-lightyellow);
+    margin-left: 2rem;
+}
