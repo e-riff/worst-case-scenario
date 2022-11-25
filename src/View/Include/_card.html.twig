@@ -19,7 +19,9 @@
 				<a data-item="{{item.id}}" data-val="-1" href=" #">
 					<img class="unicorn" {% if item.good_or_bad == -1 %} src="/assets/images/unicorn.png" {% else %} src="/assets/images/unicornBW.png" {% endif %}>
 				</a>
-				<p data-item="{{item.id}}" class="counter">{{item.favSum}}</p>
+				<p data-item="{{item.id}}" class="counter">{{item.favSum ? item.favSum  : '0' }}</p>
+
+
 				<a data-item="{{item.id}}" data-val="1" href="#">
 					<img class="poop" {% if item.good_or_bad == 1 %} src="/assets/images/pooFull.png" {% else %} src="/assets/images/pooEmpty.png" {% endif %}>
 				</a>
