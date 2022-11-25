@@ -1,9 +1,14 @@
-<div class="card shadow h-100">
+<div class="card shadow height-card h-100">
 
-	<img class="card-img-top" src="/uploads/{{ item.image }}" alt="Card image cap">
+	<div class="img-size-index">
+		<img class="card-img-top d-block rounded" src="/uploads/{{ item.image }}" alt="Card image cap">
+	</div>
 	<div class="card-body">
-		<h5 class="card-title">{{ item.name }}</h5>
-		<p class="card-postcode">{{item.address}}</p>
+		<h5 class="card-title text-center mb-2">{{ item.name }}</h5>
+		<!-- <p class="card-region">{{item.regions}}</p> -->
+		<p class="card-postcode">{{item.postcode}}</p>
+		<p class="card-category">{{categories.0.name}}</p>
+		<p class="card-address">{{item.address}}</p>
 		<p class="card-text">{{item.description}}</p>
 		<div class="count">
 			<a data-item="{{item.id}}" data-val="-1" href=" #">
@@ -16,3 +21,6 @@
 		</div>
 	</div>
 </div>
+<pre>
+	{{ dump(categories) }}
+</pre>
