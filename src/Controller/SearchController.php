@@ -11,7 +11,7 @@ class SearchController extends AbstractController
         $searchManager = new SearchManager();
         $searchResults = htmlentities(trim($research));
         $searchResults = $searchManager->searchEngine($research);
-        return $this->twig->render('Include/_card.html.twig', [
+        return $this->twig->render('Include/index.html.twig', [
             'searchResults' => $searchResults
         ]);
     }

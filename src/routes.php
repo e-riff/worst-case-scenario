@@ -10,7 +10,7 @@
 $_SESSION['user_id'] = 1;
 
 return [
-    '' => ['HomeController', 'index',],
+    '' => ['HomeController', 'index',['oSaisie']],
     'addItem' => ['HomeController', 'addItem'],
     'itemDetails' => ['HomeController', 'itemDetails', ['id']],
     'items' => ['ItemController', 'index',],
