@@ -28,8 +28,20 @@ class ItemManager extends AbstractManager
 
     public function selectAllWithLike()
     {
-        $statement = $this->pdo->query("SELECT i.*, l.id AS like_Id, l.good_or_bad  FROM " . self::TABLE . " AS i " .
+        $statement = $this->pdo->query("SELECT i.*, l.id AS like_Id, l.good_or_bad FROM " . self::TABLE . " AS i " .
             "LEFT JOIN like_or_dislike AS l ON i.id=l.item_id AND l.user_id=" . $_SESSION['user_id']);
         return $statement->fetchAll();
+    }
+
+    public function selectOneByIdWithLike(int $id): array|false
+    {
+        // prepared request
+        $statement = $this->pdo->prepare("SELECT i.*, l.id AS like_Id, l.good_or_bad FROM " . self::TABLE . " AS i" .
+            " LEFT JOIN like_or_dislike AS l ON i.id=l.item_id AND l.user_id="
+            . $_SESSION['user_id'] . " WHERE i.id=:id");
+        $statement->bindValue('id', $id, \PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetch();
     }
 }

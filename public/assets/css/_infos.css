@@ -1,0 +1,6 @@
+.card {
+    margin: auto auto;
+    width: 90%;
+    max-width: 300px;
+    border: 1px solid var(--background-color-khaki);
+}

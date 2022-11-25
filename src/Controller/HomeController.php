@@ -68,8 +68,10 @@ class HomeController extends AbstractController
     public function itemDetails()
     {
         $itemManager = new ItemManager();
+        $likes = $itemManager->selectOneByIdWithLike($_GET['id']);
         return $this->twig->render('Home/item_details.html.twig', [
-            'item' => $itemManager->selectOneById($_GET['id'])
+            'item' => $itemManager->selectOneById($_GET['id']),
+            'likes' => $likes
         ]);
     }
 

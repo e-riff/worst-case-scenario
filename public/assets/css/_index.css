@@ -72,11 +72,9 @@
     margin: 2rem auto;
 }
 
-.card .count {
+.card .test .count {
     display: block;
     display: flex;
-    border: 1px solid var(--background-color-khaki);
-    border-radius: 2px;
     justify-content: center;
 }
 

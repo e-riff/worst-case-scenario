@@ -11,8 +11,13 @@ body {
 }
 
 h1 {
+    color: var(--background-color-beaver);
     margin-top: 2rem;
     text-align: center;
+}
+
+.partage {
+    color: var(--background-color-beaver);
 }
 
 .btn {
