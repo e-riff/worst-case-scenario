@@ -14,9 +14,11 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
-        $catergoryManager = new categoryManager();
+        $catergoryManager = new CategoryManager();
         $categories = $catergoryManager->selectAll();
-        return $this->twig->render('Home/index.html.twig', ["categories" => $categories]);
+        $itemManager = new ItemManager();
+        $items = $itemManager->selectAllWithLike();
+        return $this->twig->render('Home/index.html.twig', ["categories" => $categories, "items" => $items]);
     }
 
     public function addItem(): string

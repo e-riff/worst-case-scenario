@@ -4,7 +4,6 @@
 	Welcome
 {% endblock %}
 
-
 {% block content %}
 	<main class="homepage">
 		<div class="searching container-fluid">
@@ -30,8 +29,9 @@
 		</div>
 
 		<div class="wrapper">
-			{% for number in 1..20 %}
-				{% include "/Include/_card.html.twig" with {index: loop.index} %}
+			{% for item in items %}
+				{% include "/Include/_card.html.twig" %}
+
 
 			{% endfor %}
 		</div>

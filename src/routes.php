@@ -7,7 +7,7 @@
 //          3. (optional) array of query string keys to send as parameter to the method
 // e.g route '/item/edit?id=1' will execute $itemController->edit(1)
 
-//$_SESSION['user_id'] = 1;
+$_SESSION['user_id'] = 1;
 
 return [
     '' => ['HomeController', 'index',],
@@ -19,5 +19,5 @@ return [
     'items/delete' => ['ItemController', 'delete',],
     'validation' => ['HomeController', 'validation'],
     'likeOrDislike' => ['AddOrDislikeController', 'likeOrDislike', ['itemId', 'newLikeValue']],
-    'home/connect' => ['HomeController', 'login'],
+    'home/login' => ['HomeController', 'login']
 ];

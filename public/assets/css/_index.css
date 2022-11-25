@@ -33,11 +33,21 @@
 .card {
     margin: auto auto;
     width: 90%;
+    max-width: 300px;
     border: 1px solid var(--background-color-khaki);
+}
+
+.card-img-top {
+    max-height: 300px;
+
 }
 
 .card .counter {
     margin: 0 .5rem;
+}
+
+.card .count {
+    align-self: flex-end;
 }
 
 .card .unicorn,
@@ -47,7 +57,9 @@
     pointer-events: none;
 }
 
-
+.card-text {
+    text-overflow: ellipsis;
+}
 
 .homepage h2 {
     text-align: center;
