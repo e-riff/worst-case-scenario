@@ -28,7 +28,8 @@ class ItemManager extends AbstractManager
 
     public function selectAllWithLike()
     {
-        $statement = $this->pdo->query("SELECT i.*, l.id AS like_Id, l.good_or_bad, region.name FROM " . self::TABLE . " AS i " .
+        $statement = $this->pdo->query("SELECT i.*, l.id AS like_Id, l.good_or_bad, region.name
+        FROM " . self::TABLE . " AS i " .
             "LEFT JOIN like_or_dislike AS l ON i.id=l.item_id INNER JOIN region ON i.region_id=region.id");
         return $statement->fetchAll();
     }
