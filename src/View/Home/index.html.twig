@@ -7,12 +7,12 @@
 {% block content %}
 	<main class="homepage">
 		<div class="searching container-fluid">
-			<form class="form-inline col-3" action="/recherche/" method="get">
+			<form class="form-inline col-3" action="" method="GET">
 				<fieldset>
 					<div class="input-group">
-						<input id="oSaisie" name="oSaisie" type="text" class="form-control" aria-label="Saisie de mots clés" required="required">
+						<input id="oSaisie" name="oSaisie" type="text" class="form-control" aria-label="Saisie de mots clés">
 						<div class="input-group-append">
-							<a class="btn" href="#">Recherche</a>
+							<input type="submit" class="btn" value="Recherche"></input>
 						</div>
 					</div>
 				</fieldset>
@@ -32,8 +32,6 @@
 		<div class="wrapper">
 			{% for item in items %}
 				{% include "/Include/_card.html.twig" %}
-
-
 			{% endfor %}
 		</div>
 		<h2>Vous avez touché le fond</h2>
@@ -42,5 +40,5 @@
 {% endblock %}
 
 {% block javascript %}
-	<script src="/assets/scripts/home.js"></script>
+	<script src="/assets/Scripts/home.js"></script>
 {% endblock %}

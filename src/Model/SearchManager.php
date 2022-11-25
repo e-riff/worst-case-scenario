@@ -4,23 +4,16 @@ namespace App\Model;
 
 class SearchManager extends AbstractManager
 {
-    public function searchEngine(string $research): false|array
-    {
-        $intResearch = is_numeric($research) ? intval($research) : 0;
+    public const TABLE = 'item';
 
-        if (strlen($research) == 1) {
-            $regex = ".*\\b[" . strtolower($research) . strtoupper($research) . "].*";
-            $statement = $this->pdo->prepare("SELECT id FROM " . self::TABLE .
-                " WHERE name REGEXP :regex LIMIT 200");
-            $statement->bindValue(':regex', $regex, \PDO::PARAM_STR);
+    public function searchEngine(string $research)
+    {
+            $statement = $this->pdo->prepare("SELECT i.*, l.id AS like_Id, l.good_or_bad  FROM " .
+            self::TABLE . " AS i " .
+            "LEFT JOIN like_or_dislike AS l ON i.id=l.item_id AND l.user_id=" . $_SESSION['user_id'] .
+            " WHERE i.name LIKE :research");
+            $statement->bindValue(':research', "%" . $research . "%", \PDO::PARAM_STR);
             $statement->execute();
-        } else {
-            $statement = $this->pdo->prepare("SELECT id FROM " . self::TABLE .
-                " WHERE name LIKE :research1 OR year= :research2 LIMIT 200");
-            $statement->bindValue(':research1', "%" . $research . "%", \PDO::PARAM_STR);
-            $statement->bindValue(':research2', $intResearch, \PDO::PARAM_INT);
-            $statement->execute();
-        }
-        return $statement->fetchALL();
+        return $statement->fetchAll();
     }
 }
